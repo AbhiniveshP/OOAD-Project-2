@@ -1,10 +1,10 @@
-from . import Feline
+from Feline import *
 import random
 
 class Cat(Feline):
 
     def __init__(self, name):
-        super(name)
+        super().__init__(name)
 
     def randomBehaviour(self):
 

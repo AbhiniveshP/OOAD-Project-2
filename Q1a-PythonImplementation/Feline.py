@@ -1,9 +1,9 @@
-from . import Animal
+from Animal import *
 
 class Feline(Animal):
 
     def __init__(self, name):
-        super(name)
+        super().__init__(name)
 
     def roam(self):
         print("{} the {} stalks".format(self._name, self.__class__.__name__))

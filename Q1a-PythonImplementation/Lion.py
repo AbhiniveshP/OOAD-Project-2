@@ -1,9 +1,9 @@
-from . import Feline
+from Feline import *
 
 class Lion(Feline):
 
     def __init__(self, name):
-        super(name)
+        super().__init__(name)
 
     def eat(self):
         print("{} the {} eats gazelle".format(self._name, self.__class__.__name__))
