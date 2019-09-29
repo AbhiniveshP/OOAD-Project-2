@@ -1,19 +1,29 @@
-from Animal import *
-from Canine import *
-from Feline import *
-from Pachyderm import *
-from Dog import *
-from Wolf import *
+import os
+import sys
+
 from Cat import *
-from Lion import *
-from Tiger import *
+from Dog import *
 from Elephant import *
-from Rhino import *
 from Hippo import *
-from . import Dog, Wolf, Cat, Lion, Tiger, Elephant, Rhino, Hippo
-import os, sys
+from Lion import *
+from Rhino import *
+from Tiger import *
+from Wolf import *
+# from . import ZooAnnouncer
+# from ZooAnnouncer import *
+from enum import Enum
+
+
+class Task(Enum):
+    WAKEUP = 1
+    ROLLCALL = 2
+    FEED = 3
+    LETROAM = 4
+    PUTTOBED = 5
 
 class Zookeeper:
+
+    zoo_announcers = []
 
     animalsList = [
         Cat('Carl'), Cat('Candy'),
@@ -26,51 +36,42 @@ class Zookeeper:
         Wolf('Wallace'), Wolf('Wendy')
     ]
 
-    def main(self):
+    def add_observer(self, zoo_announcer: 'ZooAnnouncer'):
+        self.zoo_announcers.append(zoo_announcer)
 
-        if not os._exists('out'):
-            os.mkdir('out')
+    def notify_observers(self, task: Task):
+        for announcer in self.zoo_announcers:
+            announcer.update(task)
 
-        sys.stdout = open(os.path.join('out', 'dayAtTheZoo.out'), 'w')
-
-        print("The Zookeeper is waking up the animals:\n---")
-        self.wakeAnimals()
-        print("\nThe Zookeeper is doing roll call:\n---")
-        self.rollCallAnimals()
-        print("\nThe Zookeeper is feeding the animals:\n---")
-        self.feedAnimals()
-        print("\nThe Zookeeper is letting the animals roam about:\n---")
-        self.letAnimalsRoam()
-        print("\nThe Zookeeper is putting the animals to bed:\n---")
-        self.putAnimalsToBed()
-
-        return
+    def remove_observer(self, zoo_announcer: 'ZooAnnouncer'):
+        self.zoo_announcers.remove(zoo_announcer)
 
     def wakeAnimals(self):
+        self.notify_observers(Task.WAKEUP)
         for animal in self.animalsList:
             animal.wakeUp()
         return
 
     def feedAnimals(self):
+        self.notify_observers(Task.FEED)
         for animal in self.animalsList:
             animal.eat()
         return
 
     def letAnimalsRoam(self):
+        self.notify_observers(Task.LETROAM)
         for animal in self.animalsList:
             animal.roam()
         return
 
     def rollCallAnimals(self):
+        self.notify_observers(Task.ROLLCALL)
         for animal in self.animalsList:
             animal.makeNoise()
         return
 
     def putAnimalsToBed(self):
+        self.notify_observers(Task.PUTTOBED)
         for animal in self.animalsList:
             animal.sleep()
         return
-
-if __name__ == '__main__':
-    zookeeper = Zookeeper()
-    zookeeper.main()

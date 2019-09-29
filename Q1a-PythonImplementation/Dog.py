@@ -1,5 +1,6 @@
 from Canine import *
 
+
 class Dog(Canine):
 
     def __init__(self, name):
