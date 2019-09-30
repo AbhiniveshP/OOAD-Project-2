@@ -10,19 +10,25 @@ from Tiger import *
 from Elephant import *
 from Rhino import *
 from Hippo import *
+import Roamer
 import os, sys
 
 class Zookeeper:
 
+    # The strategy pattern is applied here.  Defined in the animal class (in Animal.py),
+    # each animal contains a Roamer object (defined in Roamer.py).  The Roamer is an abstract class which is implemented
+    # by three concrete classes: Runner, Stalker, Stomper.  Each animal contains a Roamer which is instantiated
+    # with a concrete class on instantiation of the Animal.  When Animal.roam() is called, it delegates the responsibility
+    # to the Roamer it was instantiated with.
     animalsList = [
-        Cat('Carl'), Cat('Candy'),
-        Dog('Doris'), Dog('Dan'),
-        Elephant('Eric'), Elephant('Earl'),
-        Hippo('Harry'), Hippo('Humphrey'),
-        Lion('Leopold'), Lion('Larry'),
-        Rhino('Rory'), Rhino('Rodger'),
-        Tiger('Terrance'), Tiger('Time'),
-        Wolf('Wallace'), Wolf('Wendy')
+        Cat('Carl', Roamer.Stalker()), Cat('Candy', Roamer.Stalker()),
+        Dog('Doris', Roamer.Runner()), Dog('Dan', Roamer.Runner()),
+        Elephant('Eric', Roamer.Stomper()), Elephant('Earl', Roamer.Stomper()),
+        Hippo('Harry', Roamer.Stomper()), Hippo('Humphrey', Roamer.Stomper()),
+        Lion('Leopold', Roamer.Stalker()), Lion('Larry', Roamer.Stalker()),
+        Rhino('Rory', Roamer.Stomper()), Rhino('Rodger', Roamer.Stomper()),
+        Tiger('Terrance', Roamer.Stalker()), Tiger('Time', Roamer.Stalker()),
+        Wolf('Wallace', Roamer.Runner()), Wolf('Wendy', Roamer.Runner())
     ]
 
     def main(self):
