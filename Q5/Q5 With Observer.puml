@@ -1,0 +1,15 @@
+@startuml Q5-With-Observer
+
+Zookeeper -down-> (Wake Animals)
+Zookeeper -down-> (Roll Call Animals)
+Zookeeper -down-> (Feed Animals)
+Zookeeper -down-> (Let Animals Roam)
+Zookeeper -down-> (Put Animals To Bed)
+
+(Inform Zoo Announcer) -up-> (Wake Animals) : <<extends>>
+(Inform Zoo Announcer) -up-> (Roll Call Animals) : <<extends>>
+(Inform Zoo Announcer) -up-> (Feed Animals) : <<extends>>
+(Inform Zoo Announcer) -up-> (Let Animals Roam) : <<extends>>
+(Inform Zoo Announcer) -up-> (Put Animals To Bed) : <<extends>>
+
+@enduml
