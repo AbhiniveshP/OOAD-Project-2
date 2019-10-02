@@ -1,0 +1,9 @@
+@startuml Q5-Without-Observer
+
+Zookeeper -down-> (Wake Animals)
+Zookeeper -down-> (Roll Call Animals)
+Zookeeper -down-> (Feed Animals)
+Zookeeper -down-> (Let Animals Roam)
+Zookeeper -down-> (Put Animals To Bed)
+
+@enduml

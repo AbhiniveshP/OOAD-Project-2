@@ -1,0 +1,38 @@
+@startuml Q4-With-Observer
+
+(*) --> "Initialize Zookeeper and Animals"
+
+if "No Out Directory" then
+  --> [True]"Make Out directory"
+  --> "Redirect stdout to outfile in Out directory"
+else
+  -->[False] "Redirect stdout to outfile in Out directory"
+
+"Redirect stdout to outfile in Out directory" --> ===B1===
+
+===B1=== --> "Wake Animals"
+--> ===B2===
+===B1=== --> "Inform Zoo Announcer"
+
+===B2=== --> "Roll Call"
+--> ===B3===
+===B2=== --> "Inform Zoo Announcer"
+
+===B3=== --> "Feed Animals"
+--> ===B4===
+===B3=== --> "Inform Zoo Announcer"
+
+===B4=== --> "Let Animals Roam"
+--> ===B5===
+===B4=== -> "Inform Zoo Announcer"
+
+===B5=== --> "Put Animals to Bed"
+--> ===B6===
+===B6=== --> "Inform Zoo Announcer"
+===B6=== --> ===B7===
+===B5=== --> "Inform Zoo Announcer"
+--> ===B7===
+
+===B7=== --> (*)
+
+@enduml
