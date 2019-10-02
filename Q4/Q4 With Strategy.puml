@@ -1,0 +1,18 @@
+@startuml Q4-With-Strategy
+
+(*) --> "Initialize Zookeeper and Animals"
+
+if "No Out Directory" then
+  --> [True]"Make Out directory"
+  --> "Redirect stdout to outfile in Out directory"
+else
+  -->[False] "Redirect stdout to outfile in Out directory"
+
+"Redirect stdout to outfile in Out directory" --> "Wake Animals"
+"Wake Animals" --> "Roll Call"
+"Roll Call" --> "Feed Animals"
+"Feed Animals" --> "Let Animals Roam"
+"Let Animals Roam" --> "Put Animals to Bed"
+"Put Animals to Bed" --> (*)
+
+@enduml
