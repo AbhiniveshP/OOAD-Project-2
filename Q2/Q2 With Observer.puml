@@ -1,0 +1,85 @@
+@startuml Q2-With-Observer
+left to right direction
+
+Zookeeper "1" - "2 of each Animal" Animal
+Animal "1" - "1" Roamer : strategy >
+Runner -up|> Roamer
+Stalker -up|> Roamer
+Stomper -up|> Roamer
+
+Zookeeper : {field} +Animal[] animalsList
+Zookeeper : +main()
+Zookeeper : +wakeAnimals()
+Zookeeper : +feedAnimals()
+Zookeeper : +letAnimalsRoam()
+Zookeeper : +rollCallAnimals()
+Zookeeper : +putAnimalsToBed()
+Zookeeper : +addObserver(ZooAnnouncer)
+Zookeeper : +notifyObservers(Task)
+Zookeeper : +removeObserver(ZooAnnouncer)
+
+ZooAnnouncer : {field} +announcementMap
+ZooAnnouncer : {field} +Zookeeper zookeeper
+ZooAnnouncer : +update(Task)
+ZooAnnouncer : +unsubscribe()
+
+ZooAnnouncer -> "subject" Zookeeper
+Zookeeper -> "observer" ZooAnnouncer
+
+Animal : {field} #string name
+Animal : {field} #Roamer roamer
+Animal : +Sleep()
+Animal : +Wakeup()
+Animal : +Roam()
+Animal : {abstract} Eat()
+Animal : {abstract} makeNoise()
+
+Roamer : {abstract} roam()
+
+Runner : +roam()
+Stalker : +roam()
+Stomper : +roam()
+
+Canine -down|> Animal
+Feline -down|> Animal
+Pachyderm -down|> Animal
+
+Dog -|> Canine
+Wolf -|> Canine
+
+Cat -|> Feline
+Lion -|> Feline
+Tiger -|> Feline
+
+Elephant -|> Pachyderm
+Hippo -|> Pachyderm
+Rhino -|> Pachyderm
+
+Dog : +eat()
+Dog : +makeNoise()
+
+Wolf : +eat()
+Wolf : +makeNoise()
+
+Cat : +eat()
+Cat : +makeNoise()
+Cat : +makeNoiseCat()
+Cat : +randomBehavior()
+
+Lion : +eat()
+Lion : +makeNoise()
+
+Tiger : +eat()
+Tiger : +makeNoise()
+
+Elephant : +eat()
+Elephant : +makeNoise()
+
+Hippo : +eat()
+Hippo : +makeNoise()
+
+Rhino : +eat()
+Rhino : +makeNoise()
+
+
+@enduml
