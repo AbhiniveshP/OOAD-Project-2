@@ -1,0 +1,16 @@
+@startuml Q3-With-Strategy
+
+
+Zookeeper --> Animals : Wake Animals
+
+Zookeeper --> Animals : Roll call Animals
+
+Zookeeper --> Animals : Feed Animals
+
+Zookeeper --> Animals : Let Animals roam
+Animals --> Roamer : Call Roamer functionality
+
+Zookeeper --> Animals : Put animals to bed
+
+
+@enduml
