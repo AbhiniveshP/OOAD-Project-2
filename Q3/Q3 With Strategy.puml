@@ -1,4 +1,4 @@
-@startuml Q2-With-Strategy
+@startuml Q3-With-Strategy
 
 
 Zookeeper --> Animals : Wake Animals
