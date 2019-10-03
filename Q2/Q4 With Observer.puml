@@ -1,0 +1,22 @@
+@startuml Q2-With-Observer
+
+ZooAnnouncer --> Zookeeper : Subscribe
+
+Zookeeper --> ZooAnnouncer : Notify WAKEUP
+Zookeeper --> Animals : Wake Animals
+
+Zookeeper --> ZooAnnouncer : Notify ROLLCALL
+Zookeeper --> Animals : Roll call Animals
+
+Zookeeper --> ZooAnnouncer : Notify FEED
+Zookeeper --> Animals : Feed Animals
+
+Zookeeper --> ZooAnnouncer : Notify ROAM
+Zookeeper --> Animals : Let Animals roam
+
+Zookeeper --> ZooAnnouncer : Notify PUTTOBED
+Zookeeper --> Animals : Put animals to bed
+
+ZooAnnouncer --> Zookeeper : Unsubscribe
+
+@enduml
