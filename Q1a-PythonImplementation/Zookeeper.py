@@ -10,7 +10,6 @@ from Tiger import *
 from Elephant import *
 from Rhino import *
 from Hippo import *
-from . import Dog, Wolf, Cat, Lion, Tiger, Elephant, Rhino, Hippo
 import os, sys
 
 class Zookeeper:
