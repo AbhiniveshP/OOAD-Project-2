@@ -2,10 +2,6 @@
 left to right direction
 
 Zookeeper "1" - "2 of each Animal" Animal
-Animal "1" - "1" Roamer : strategy >
-Runner -up|> Roamer
-Stalker -up|> Roamer
-Stomper -up|> Roamer
 
 Zookeeper : {field} +Animal[] animalsList
 Zookeeper : +main()
@@ -34,15 +30,9 @@ Animal : +Roam()
 Animal : {abstract} Eat()
 Animal : {abstract} makeNoise()
 
-Roamer : {abstract} roam()
-
-Runner : +roam()
-Stalker : +roam()
-Stomper : +roam()
-
-Canine -down|> Animal
-Feline -down|> Animal
-Pachyderm -down|> Animal
+Canine -|> Animal
+Feline -|> Animal
+Pachyderm -|> Animal
 
 Dog -|> Canine
 Wolf -|> Canine

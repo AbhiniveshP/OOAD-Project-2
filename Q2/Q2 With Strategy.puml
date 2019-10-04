@@ -29,11 +29,11 @@ Runner : +roam()
 Stalker : +roam()
 Stomper : +roam()
 
-Canine -down|> Animal
-Feline -down|> Animal
-Pachyderm -down|> Animal
+Canine -|> Animal
+Feline -|> Animal
+Pachyderm -|> Animal
 
-Dog -|> Canine
+Dog -up|> Canine
 Wolf -|> Canine
 
 Cat -|> Feline
