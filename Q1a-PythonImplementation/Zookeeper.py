@@ -14,6 +14,7 @@ import os, sys
 
 class Zookeeper:
 
+    # list of Animals is kept as an attribute of Zookeeper class
     animalsList = [
         Cat('Carl'), Cat('Candy'),
         Dog('Doris'), Dog('Dan'),
@@ -27,11 +28,12 @@ class Zookeeper:
 
     def main(self):
 
-        if not os._exists('out'):
+        if not os._exists('out'):                   # if out folder doesn't exist, then create one
             os.mkdir('out')
 
-        sys.stdout = open(os.path.join('out', 'dayAtTheZoo.out'), 'w')
+        sys.stdout = open(os.path.join('out', 'dayAtTheZoo.out'), 'w')      # write all print statements to a file
 
+        # call wakeAnimals(), rollCallAnimals(), feedAnimals(), letAnimalsRoam(), putAnimalsToBed() in the same order
         print("The Zookeeper is waking up the animals:\n---")
         self.wakeAnimals()
         print("\nThe Zookeeper is doing roll call:\n---")
@@ -46,30 +48,45 @@ class Zookeeper:
         return
 
     def wakeAnimals(self):
+        '''
+        :return: wakeUp() list of Animals one at a time
+        '''
         for animal in self.animalsList:
             animal.wakeUp()
         return
 
     def feedAnimals(self):
+        '''
+        :return: feedAnimals() list of Animals one at a time
+        '''
         for animal in self.animalsList:
             animal.eat()
         return
 
     def letAnimalsRoam(self):
+        '''
+        :return: lets list of Animals roam one at a time
+        '''
         for animal in self.animalsList:
             animal.roam()
         return
 
     def rollCallAnimals(self):
+        '''
+        :return: allows roll call list of Animals one at a time.
+        '''
         for animal in self.animalsList:
             animal.makeNoise()
         return
 
     def putAnimalsToBed(self):
+        '''
+        :return: allows list of Animals put to bed one at a time.
+        '''
         for animal in self.animalsList:
             animal.sleep()
         return
 
 if __name__ == '__main__':
-    zookeeper = Zookeeper()
-    zookeeper.main()
+    zookeeper = Zookeeper()                     # Create Zookeeper() class and instantiate an object named zookeeper
+    zookeeper.main()                            # Call main method of zookeeper object
